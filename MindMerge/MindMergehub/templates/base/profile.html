@@ -1,0 +1,106 @@
+{% extends 'main.html' %} {% load static %} {% block content %} {% block css %}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+{% endblock %}
+
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 mb-4">
+      <div class="card">
+        <div class="card-body profile-header">
+          <div class="profile-info">
+            {% if user.profile.avatar %}
+            <img
+              src="{{ user.profile.avatar.url }}"
+              alt="{{ user.username }}'s avatar"
+              class="profile-avatar"
+            />
+            {% else %}
+            <img
+              src="{% static 'media/avatars/default.svg' %}"
+              alt="{{ user.username }}'s avatar"
+              class="profile-avatar"
+            />
+            {% endif %}
+            <div>
+              <h3 class="card-title mb-2">{{ user.username }}</h3>
+              <p class="text-muted mb-0">
+                Member since: {{ user.date_joined|date:"F d, Y" }}
+              </p>
+              {% if user.profile.location %}
+              <p class="text-muted mb-0">
+                <i class="bi bi-geo-alt"></i> {{ user.profile.location }}
+              </p>
+              {% endif %}
+
+              <div class="social-links">
+                {% if user.profile.github %}
+                <a
+                  href="{{ user.profile.github }}"
+                  target="_blank"
+                  title="GitHub"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                {% endif %} {% if user.profile.linkedin %}
+                <a
+                  href="{{ user.profile.linkedin }}"
+                  target="_blank"
+                  title="LinkedIn"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                {% endif %} {% if user.profile.website %}
+                <a
+                  href="{{ user.profile.website }}"
+                  target="_blank"
+                  title="Personal Website"
+                >
+                  <i class="bi bi-globe"></i>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {% if user.profile.bio %}
+          <p class="bio-text">{{ user.profile.bio }}</p>
+          {% endif %} {% if request.user == user %}
+          <a
+            href="{% url 'update-user' %}"
+            class="btn btn-outline-primary btn-sm edit-profile"
+          >
+            <i class="bi bi-pencil"></i> Edit Profile
+          </a>
+          <a
+            href="{% url 'delete-profile' %}"
+            class="btn btn-outline-danger btn-sm edit-profile"
+            style="top: 4rem"
+            >Delete Profile</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        <div class="card-body">{% include 'base/topics_components.html' %}</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">{% include 'base/feed_components.html' %}</div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          {% include 'base/activity_components.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

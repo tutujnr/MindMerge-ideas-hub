@@ -1,0 +1,133 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/login_register.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    {% endblock %}
+
+<div class="login-container">
+    {% if page == 'login' %}
+    <div class="form-wrapper">
+        <h2 class="form-title">Login</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" name="username" placeholder="Enter your username" required class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter password" required class="form-input" />
+            </div>
+
+            <input type="submit" value="Login" class="form-submit" />
+
+            <p class="form-footer">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        </form>
+    </div>
+
+    {% elif page == 'register' %}
+    <div class="form-wrapper">
+        <h2 class="form-title">Register</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <div id="password-requirements" class="requirements-container">
+                    <p id="length" class="requirement">
+                        <i class="fas fa-times icon"></i> At least 8 characters
+                    </p>
+                    <p id="digit" class="requirement">
+                        <i class="fas fa-times icon"></i> At least one digit
+                    </p>
+                    <p id="uppercase" class="requirement">
+                        <i class="fas fa-times icon"></i> At least one uppercase letter
+                    </p>
+                    <p id="lowercase" class="requirement">
+                        <i class="fas fa-times icon"></i> At least one lowercase letter
+                    </p>
+                    <p id="special" class="requirement">
+                        <i class="fas fa-times icon"></i> At least one special character
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <input type="submit" value="Register" class="form-submit" />
+            <p class="form-footer">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
+</div>
+{% endif %}
+    {% block js %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.querySelector('#id_password1');
+        if (!passwordInput) return;
+        
+        const requirements = {
+            length: {
+                element: document.querySelector('#length'),
+                regex: /.{8,}/
+            },
+            digit: {
+                element: document.querySelector('#digit'),
+                regex: /\d/
+            },
+            uppercase: {
+                element: document.querySelector('#uppercase'),
+                regex: /[A-Z]/
+            },
+            lowercase: {
+                element: document.querySelector('#lowercase'),
+                regex: /[a-z]/
+            },
+            special: {
+                element: document.querySelector('#special'),
+                regex: /[!@#$%^&*(),.?":{}|<>]/
+            }
+        };
+
+        function updateRequirement(requirement, value) {
+            const icon = requirement.element.querySelector('.icon');
+            const isValid = requirement.regex.test(value);
+            
+            icon.className = isValid ? 'fas fa-check icon valid' : 'fas fa-times icon invalid';
+            requirement.element.classList.toggle('valid', isValid);
+            requirement.element.classList.toggle('invalid', !isValid);
+            
+            return isValid;
+        }
+
+        passwordInput.addEventListener('input', function() {
+            const value = this.value;
+            let allValid = true;
+            
+            Object.values(requirements).forEach(req => {
+                if (!updateRequirement(req, value)) {
+                    allValid = false;
+                }
+            });
+
+            const submitButton = document.querySelector('.form-submit');
+            submitButton.disabled = !allValid;
+        });
+    });
+    </script>
+    {% endblock %}
+{% endblock %}

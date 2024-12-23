@@ -1,0 +1,198 @@
+  .create-room-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.create-room-container .custom-card {
+    background: white;
+    border-radius: 5px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-room-container .heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.create-room-container .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.create-room-container .required {
+    color: #e63946;
+    margin-left: 2px;
+}
+
+.create-room-container .form-control, 
+.create-room-container select,
+.create-room-container textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+}
+
+.create-room-container .form-control:focus,
+.create-room-container select:focus,
+.create-room-container textarea:focus {
+    outline: none;
+    border-color: #90FF90;
+    box-shadow: 0 0 5px rgba(144, 238, 144, 0.5);
+}
+
+.create-room-container select {
+    background-color: white;
+    height: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 1em;
+    padding-right: 40px;
+}
+
+
+.create-room-container textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+.create-room-container .btn-submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #90FF90;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+.create-room-container .btn-submit:hover {
+    background-color: #90FF90;
+}
+
+.create-room-container .btn-cancel {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    color: grey;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.create-room-container .btn-cancel:hover {
+    background-color: #f8f9fa;
+    color: #90FF90;
+}
+
+.create-room-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        padding: 15px;
+        width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        font-size: 1em;
+    }
+    button, .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 1em;
+    }
+    .large-element {
+        display: none;
+    }
+    .card {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    .list-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .button {
+            padding: 10px;
+            font-size: 0.9em;
+        }
+    }
+}

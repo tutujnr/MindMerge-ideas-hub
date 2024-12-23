@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">All Topics</h3>
+            <form class="d-flex" method="GET" action="{% url 'topics' %}">
+                <input class="form-control me-2 search-input" type="search" name="q" placeholder="Search Topics..." 
+                       value="{{ request.GET.q }}">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="card-body p-0">
+            <div class="list-group list-group-flush">
+                <a href="{% url 'home' %}"
+                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    View All
+                    <span class="badge bg-primary rounded-pill">{{ topics_count }}</span>
+                </a>
+                
+                {% for topic in topics %}
+                <a href="{% url 'home' %}?q={{ topic.name|urlencode }}"
+                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    {{ topic.name }}
+                    <span class="badge bg-light text-dark rounded-pill">{{ topic.room_set.count }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .badge.bg-primary {
+        background-color: #8405eb !important;
+    }
+    
+    .btn-outline-primary {
+        color: #8405eb;
+        border-color: #8405eb;
+    }
+    
+    .btn-outline-primary:hover {
+        background-color: #8405eb;
+        border-color: #8405eb;
+        color: white;
+    }
+
+    .btn-outline-primary:active {
+        background-color: #6d03c2 !important;
+        border-color: #6d03c2 !important;  
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 5px rgba(132, 5, 235, 0.5);
+    }
+</style>
+{% endblock %}

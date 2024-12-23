@@ -1,0 +1,130 @@
+{% extends 'main.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+    {% block css %}
+    <!-- <link rel="stylesheet" href="{% static 'styles/room.css' %}" type="text/css"/> -->
+    <style>
+        .bg-primary {
+            background-color: blue !important;
+        }
+
+        .text-primary {
+            color: blue !important;
+        }
+
+        .btn-primary {
+            background-color: blue !important;
+            border-color: blue !important;
+        }
+
+        .btn-primary:hover {
+            background-color: blue !important;
+            border-color: blue !important;
+        }
+
+        .message-form .input-group input:focus {
+            outline: none !important;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(132, 5, 235, 0.5);
+        }
+
+        .message-content {
+            max-width: 80%;
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-meta {
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+    </style>
+    {% endblock %}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h2 class="card-title mb-0">{{ room.name }}</h2>
+                    <p class="text-muted mb-0">{{ room.description }}</p>
+                </div>
+
+                <div class="card-body" style="height: 60vh; overflow-y: auto;">
+                    <div class="chat-messages">
+                        {% for comment in comments %}
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="message-content {% if user == comment.user %}ms-auto{% endif %}">
+                                    <div class="card {% if user == comment.user %}bg-primary text-white{% else %} bg-transparent{% endif %}" 
+                                         style="max-width: 80%;">
+                                        <div class="card-body">
+                                            <p class="card-text mb-1">{{ comment.content }}</p>
+                                            <p class="card-text mb-0">{{ comment.body }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="message-meta">
+                                        <small class="text-muted">
+                                            @{{ comment.user }} · {{ comment.created|human_readable_date }}
+                                            {% if user == comment.user %}
+                                            · <a href="{% url 'delete-comment' comment.id %}" 
+                                                 class="text-danger text-decoration-none">Delete</a>
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="card-footer">
+                    <form action="" method="post" class="message-form">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" 
+                                   name="body" 
+                                   id="content" 
+                                   class="form-control" 
+                                   placeholder="Write your message here..." 
+                                   autocomplete="off"/>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Participants</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        {% for participant in participants %}
+                        <div class="list-group-item">
+                            <div class="d-flex align-items-center">
+                                <div class="me-2">
+                                    <div class="bg-primary rounded-circle" 
+                                         style="width: 10px; height: 10px;"></div>
+                                </div>
+                                <span>@{{ participant.username }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

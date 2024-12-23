@@ -1,0 +1,109 @@
+body {
+    padding-top: 0;
+}
+
+.home-container {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+    
+.browse-topics, .activity {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+    
+.create-room {
+    padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        padding: 15px;
+        width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        font-size: 1em;
+    }
+    button, .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 1em;
+    }
+    .large-element {
+        display: none;
+    }
+    .card {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    .list-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .button {
+            padding: 10px;
+            font-size: 0.9em;
+        }
+    }
+}

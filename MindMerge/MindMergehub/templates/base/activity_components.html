@@ -1,0 +1,63 @@
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/activity_components.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/dark_mode.css' %}">
+    {% endblock %}
+
+<div class="card activity-card mt-2">
+    <div class="card-header">
+        <h3 class="mb-0 fs-4">Recent Activity</h3>
+    </div>
+    <div class="card-body p-0">
+        {% if comments %}
+        <div class="activity-list">
+            {% for comment in comments %}
+            <div class="activity-item">
+                <div class="activity-header">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="activity-avatar">
+                            {{ comment.user.username|first|upper }}
+                        </div>
+                        <div class="activity-meta">
+                            <a href="{% url 'profile' comment.user.id %}" class="user-link">
+                                @{{ comment.user.username }}
+                            </a>
+                            <span class="activity-time">
+                                {{ comment.created|human_readable_date }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="activity-room">
+                        replied in "{{ comment.room }}"
+                    </div>
+                </div>
+                
+                <div class="activity-content">
+                    {{ comment.body }}
+                </div>
+
+                {% if request.user == comment.user %}
+                <div class="activity-actions">
+                    <a href="{% url 'delete-comment' comment.id %}" 
+                    class="btn btn-link text-danger p-0" style="text-decoration: none;" 
+                    onmouseover="this.style.textDecoration='underline';" 
+                    onmouseout="this.style.textDecoration='none';">
+                        <small>Delete</small>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-4 text-muted">
+            <p class="mb-0">No recent activity</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

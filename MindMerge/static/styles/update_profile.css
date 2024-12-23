@@ -1,0 +1,243 @@
+.avatar-upload {
+    position: relative;
+    max-width: 120px;
+    margin: 0 auto;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.form-control:focus {
+    outline: none !important;
+    border-color: #90FF90 !important;
+    box-shadow: 0 0 5px rgba(144, 238, 144, 0.5) !important;
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    border-right: none;
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+.input-group .form-control:focus {
+    outline: none !important;
+    border-color: #90FF90 !important;
+    border-left: 1px solid #90FF90 !important;
+    box-shadow: 0 0 5px rgba(144, 238, 144, 0.5) !important;
+}
+
+.input-group .form-control:focus + .input-group-text,
+.input-group .input-group-text + .form-control:focus {
+    border-color: #90FF90 !important;
+}
+
+.btn-primary {
+    background-color: #90FF90;
+    border-color: #90FF90;
+}
+
+.btn-primary:hover {
+    background-color: #90FF90;
+    border-color: #90FF90;
+}
+
+.btn-outline-primary {
+    color: #90FF90;
+    border-color: #90FF90;
+}
+
+.btn-outline-primary:hover {
+    background-color: #90FF90;
+    border-color: #90FF90;
+    color: white;
+}
+
+.card {
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+}
+
+textarea.form-control:focus {
+    outline: none !important;
+    border-color: #90FF90 !important;
+    box-shadow: 0 0 5px rgba(144, 238, 144, 0.5) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none !important;
+    border-color: #90FF90 !important;
+    box-shadow: 0 0 5px rgba(144, 238, 144, 0.5) !important;
+}
+
+.avatar-upload {
+    position: relative;
+    max-width: 120px;
+    margin: 0 auto;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.form-control:focus {
+    border-color: #90FF90;
+    box-shadow: 0 0 0 0.2rem rgba(144, 238, 144, 0.5);
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    border-right: none;
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+.input-group .form-control:focus {
+    border-left: 1px solid #90FF90;
+}
+
+.btn-primary {
+    background-color: #90FF90;
+    border-color: #90FF90;
+}
+
+.btn-primary:hover {
+    background-color: #90FF90;
+    border-color: #90FF90;
+}
+
+.btn-outline-primary {
+    color: #90FF90;
+    border-color: #90FF90;
+}
+
+.btn-outline-primary:hover {
+    background-color: #90FF90;
+    border-color: #90FF90;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        padding: 15px;
+        width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        font-size: 1em;
+    }
+    button, .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 1em;
+    }
+    .large-element {
+        display: none;
+    }
+    .card {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    .list-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .button {
+            padding: 10px;
+            font-size: 0.9em;
+        }
+    }
+}

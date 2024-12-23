@@ -1,0 +1,174 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Update Profile - MindMerge{% endblock %}
+
+{% block content %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/update_profile.css' %}">
+    {% endblock %}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="card-title mb-0">Update Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data" class="update-profile-form">
+                        {% csrf_token %}
+                
+                        <div class="mb-4 text-center">
+                            <div class="avatar-upload">
+                                <div class="current-avatar mb-3">
+                                    {% if user.profile.avatar %}
+                                        <img src="{{ user.profile.avatar.url }}" 
+                                             alt="Current Avatar" 
+                                             class="rounded-circle" 
+                                             id="avatarPreview"
+                                             style="width: 120px; height: 120px;">
+                                    {% else %}
+                                        <img src="/static/media/avatars/default.svg" 
+                                             alt="Default Avatar" 
+                                             class="rounded-circle" 
+                                             id="avatarPreview" 
+                                             style="width: 120px; height: 120px;">
+                                    {% endif %}
+                                </div>
+                                <div class="upload-btn-wrapper">
+                                    <button class="btn btn-outline-primary btn-sm mb-2" type="button" onclick="document.getElementById('avatarInput').click()">
+                                        Change Profile Picture
+                                    </button>
+                                    <input type="file" name="avatar" id="avatarInput" accept="image/*" style="display: none;">
+                                    <button class="btn btn-outline-danger btn-sm ms-2" type="button" id="removeAvatarBtn">
+                                        <i class="bi bi-x-circle"></i>
+                                        Remove
+                                    </button>
+                                    <input type="hidden" name="remove_avatar" id="removeAvatarInput" value="false">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" 
+                                   class="form-control {% if form.username.errors %}is-invalid{% endif %}" 
+                                   id="username" 
+                                   name="username" 
+                                   value="{{ form.username.value|default:user.username }}"
+                                   required>
+                            {% if form.username.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.username.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" 
+                                   class="form-control {% if form.email.errors %}is-invalid{% endif %}" 
+                                   id="email" 
+                                   name="email" 
+                                   value="{{ form.email.value|default:user.email }}"
+                                   required>
+                            {% if form.email.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bio" class="form-label">Bio</label>
+                            <textarea class="form-control {% if form.bio.errors %}is-invalid{% endif %}" 
+                                      id="bio" 
+                                      name="bio" 
+                                      rows="4">{{ form.bio.value|default:user.profile.bio }}</textarea>
+                            {% if form.bio.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.bio.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                            <div class="form-text">Tell us about yourself</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Social Links</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
+                                    <i class="bi bi-github"></i>
+                                </span>
+                                <input type="url" 
+                                       class="form-control" 
+                                       name="github" 
+                                       placeholder="GitHub URL"
+                                       value="{{ form.github.value|default:user.profile.github }}">
+                            </div>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
+                                    <i class="bi bi-linkedin"></i>
+                                </span>
+                                <input type="url" 
+                                       class="form-control" 
+                                       name="linkedin" 
+                                       placeholder="LinkedIn URL"
+                                       value="{{ form.linkedin.value|default:user.profile.linkedin }}">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-globe"></i>
+                                </span>
+                                <input type="url" 
+                                       class="form-control" 
+                                       name="website" 
+                                       placeholder="Personal Website"
+                                       value="{{ form.website.value|default:user.profile.website }}">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="{% url 'profile' user.id %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% block extra_js %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const avatarInput = document.getElementById('avatarInput');
+        const avatarPreview = document.getElementById('avatarPreview');
+        const removePictureBtn = document.getElementById('removeAvatarBtn');
+        // const profilePicture = document.getElementById('profilePicture');
+        const removeAvatarInput = document.getElementById('removeAvatarInput');
+
+        avatarInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    avatarPreview.src = e.target.result;
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        removePictureBtn.addEventListener('click', function(e) {
+            console.log('Remove button clicked'); 
+            e.preventDefault();
+            avatarInput.value = '';
+            avatarPreview.src = '/static/media/avatars/default.svg';
+            removeAvatarInput.value = 'true';
+        });
+    });
+    </script>
+    {% endblock %}
+{% endblock %}

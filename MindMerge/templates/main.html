@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindMerge</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/dark_mode.css' %}" />
+    <script>
+      // Function to hide alert messages after 5 seconds
+      setTimeout(function () {
+        var messages = document.querySelectorAll(".alert-message");
+        messages.forEach(function (message) {
+          message.style.opacity = "0";
+          setTimeout(function () {
+            message.style.display = "none";
+          }, 1000);
+        });
+      }, 3000); // 5000 milliseconds = 5 seconds
+    </script>
+  </head>
+  <body>
+    {% include 'navbar.html' %} {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="alert-message">
+        {{ message }}
+        <div class="loader"></div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% block content %} {% endblock %}
+
+  </body>
+</html>

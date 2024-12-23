@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/delete.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/dark_mode.css' %}">
+    {% endblock %}
+
+<div class="delete-container">
+    <h1 id="delete-room">
+        Delete
+        {% if room %}
+        Room
+        {% elif user == comment.user %}
+        Comment
+        {% else %}
+        Profile
+        {% endif %}
+    </h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>
+            Are you sure you want to delete
+            {% if room %}
+            this room?
+            {% elif comment.user %}
+            this comment?
+            {% else %}
+            your profile?
+            {% endif %}
+        </p>
+        <div class="submit-buttons">
+        <button><a href="{{ request.META.HTTP_REFERER }}">Go Back</a></button>
+        <input type="submit" value="Confirm" />
+        </div>
+    </form>
+</div>
+{% endblock %}

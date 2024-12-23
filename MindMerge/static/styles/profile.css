@@ -1,0 +1,193 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.profile-container h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.profile-container p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.profile-container div {
+    margin-top: 20px;
+}
+
+.profile-header {
+    position: relative;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-avatar svg {
+    width: 100%;
+    height: 100%;
+}
+
+.edit-profile {
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.social-links {
+    margin-top: 0.5rem;
+}
+
+.social-links a {
+    color: #6c757d;
+    margin-right: 1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: #90FF90;
+}
+
+.bio-text {
+    margin-top: 1rem;
+    color: #6c757d;
+}
+
+.btn.btn-outline-primary.btn-sm.edit-profile {
+    border: 1px solid #90FF90;
+    color: #90FF90;
+}
+
+.btn.btn-outline-primary.btn-sm.edit-profile:hover {
+    background-color: #90FF90;
+    color: white;
+}
+
+.bi.bi-pencil {
+    color: #90FF90;
+}
+
+.btn.btn-outline-primary.btn-sm.edit-profile:hover .bi.bi-pencil {
+    color: white;
+}
+
+.edit-profile.delete-profile {
+    top: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        padding: 15px;
+        width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        font-size: 1em;
+    }
+    button, .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 1em;
+    }
+    .large-element {
+        display: none;
+    }
+    .card {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    .list-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .button {
+            padding: 10px;
+            font-size: 0.9em;
+        }
+    }
+}

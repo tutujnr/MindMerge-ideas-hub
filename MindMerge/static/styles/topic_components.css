@@ -1,0 +1,160 @@
+.card {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1rem;
+}
+
+.list-group-item {
+    padding: 0.75rem 1rem;
+    border-left: none;
+    border-right: none;
+    transition: all 0.2s ease;
+}
+
+.list-group-item:first-child {
+    border-top: none;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+.list-group-item.active {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    color: #000;
+}
+
+.badge {
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.badge.bg-light {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6;
+}
+
+.fs-4 {
+    font-size: 1.25rem !important;
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+.badge.bg-primary {
+    background-color: #90FF90 !important;
+}
+
+.text-primary {
+    color: #90FF90 !important;
+}
+
+.list-group-item:hover .bi-chevron-right {
+    transform: translateX(3px);
+    transition: transform 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        padding: 15px;
+        width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        font-size: 1em;
+    }
+    button, .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 1em;
+    }
+    .large-element {
+        display: none;
+    }
+    .card {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    .list-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .button {
+            padding: 10px;
+            font-size: 0.9em;
+        }
+    }
+}

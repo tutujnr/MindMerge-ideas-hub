@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MindMerge</h1>
+    <div id="rooms-container"></div>
+        
+</body>
+<script>
+    let getRooms = async () => {
+        let response = await fetch('http://localhost:8000/api/rooms/')
+        let data = await response.json()
+        let roomsContainer = document.getElementById('rooms-container')
+        data.forEach(room => {
+            let roomElement = document.createElement('div')
+            roomElement.innerHTML = `
+                <h2>${room.name}</h2>
+                <p>${room.description}</p>
+            `
+            roomsContainer.appendChild(roomElement)
+        })
+        console.log(data)
+    }
+
+
+    getRooms()
+</script>
+</html>

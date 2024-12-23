@@ -1,0 +1,73 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/room_form.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/dark_mode.css' %}">
+    {% endblock %}
+
+<div class="create-room-container">
+    <div class="custom-card">
+        <h3 class="heading">
+            {% if page == 'create-room' %}
+                Create New Room
+            {% elif page == 'update-room' %}
+                Update Room
+            {% endif %}
+        </h3>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="form-label">
+                    {{ field.label }}
+                    {% if field.field.required %}
+                        <span class="required">*</span>
+                    {% endif %}
+                </label>
+                
+                {% if field.field.widget.input_type == 'select' %}
+                    {{ field }}
+                {% elif field.field.widget.input_type == 'text' or field.field.widget.input_type == 'email' %}
+                    <input type="{{ field.field.widget.input_type }}" 
+                           class="form-control"
+                           id="{{ field.id_for_label }}"
+                           name="{{ field.html_name }}"
+                           value="{{ field.value|default:'' }}"
+                           {% if field.field.required %}required{% endif %}>
+                {% elif field.field.widget.input_type == 'textarea' %}
+                    <textarea class="form-control"
+                              id="{{ field.id_for_label }}"
+                              name="{{ field.html_name }}"
+                              {% if field.field.required %}required{% endif %}>{{ field.value|default:'' }}</textarea>
+                {% else %}
+                    {{ field }}
+                {% endif %}
+                
+                {% if field.errors %}
+                    <div style="color: #e63946; font-size: 0.875rem; margin-top: 0.25rem;">
+                        {{ field.errors|join:", " }}
+                    </div>
+                {% endif %}
+                {% if field.help_text %}
+                    <small style="color: #666;">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <button type="submit" class="btn-submit">
+                {% if page == 'create-room' %}
+                    Create Room
+                {% elif page == 'update-room' %}
+                    Update Room
+                {% endif %}
+            </button>
+            <a href="{% url 'home' %}" class="btn-cancel">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

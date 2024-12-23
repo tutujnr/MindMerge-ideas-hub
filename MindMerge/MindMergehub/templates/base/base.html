@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMerge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .navbar .nav-links a:hover {
+            color: #d4e157;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(120deg, #161616, #545754);
+            color: white;
+            background-size: cover;
+            background-color: #333;
+            position: relative;
+        }
+        .hero h1, .hero h2 {
+            background: rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .hero .animation-container {
+            margin-top: 2rem;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+        }
+        .hero .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            margin: 0 0.5rem;
+            font-size: 1rem;
+            color: white;
+            background-color: darkgreen;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .hero .btn:hover {
+            background-color: #388E3C;
+            color: snow;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">MindMerge</div>
+            <div class="nav-links">
+                <a href="{% url 'about' %}">About</a>
+                <a href="#">Features</a>
+                <a href="{% url 'contacts' %}">Contact</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to MindMerge</h1>
+            <h2>Join rooms or create your own, and share ideas with your peers!</h2>
+            <div class="animation-container">
+                <img src="https://steemitimages.com/DQmVeXnNx1K7eNvVNd2F6nE4vy7AKK2erMTFtEQQreJmDLK/Use-Phones-In-School-2-1.gif" alt="Phones in School Animation">
+            </div>
+            <a href="{% url 'home' %}" class="btn">Get Started</a>
+            <a href="{% url 'about' %}" class="btn">Learn More</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 MindMerge. All rights reserved. Developed by Langat</p>
+    </footer>
+</body>
+</html>

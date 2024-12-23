@@ -1,0 +1,566 @@
+/* dark_mode.css */
+:root {
+    /* Background Colors */
+    --dark-background: #121212;         /* Deep, soft black for main background */
+    --dark-surface: #1E1E1E;            /* Slightly lighter than background for cards/surfaces */
+    --dark-surface-lighter: #252525;    /* Even lighter surface for contrast */
+
+    /* Text Colors */
+    --dark-text-primary: #E0E0E0;       /* Soft off-white for primary text */
+    --dark-text-secondary: #A0A0A0;     /* Muted gray for secondary text */
+    --dark-text-tertiary: #6E6E6E;      /* Even more muted for hints/metadata */
+
+    /* Primary & Accent Colors */
+    --dark-primary: #90FF90;            /* Original primary color preserved */
+    --dark-primary-light: #90FF90;      /* Lighter shade of primary */
+    --dark-primary-dark: #90FF90;       /* Darker shade of primary */
+
+    /* Input & Interactive Elements */
+    --dark-input-background: #2A2A2A;   /* Dark input fields */
+    --dark-border: #3A3A3A;             /* Subtle border color */
+    --dark-hover: #333333;              /* Hover state background */
+
+    /* Feedback Colors */
+    --dark-success: #4CAF50;            /* Green for success states */
+    --dark-error: #F44336;              /* Red for error states */
+    --dark-warning: #FF9800;           /* Orange for warnings */
+}
+
+/* Optional: Dark Mode Transition */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: var(--dark-background) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Navbar Dark Mode Styles */
+.dark-mode .navbar {
+    background-color: var(--dark-surface) !important;
+}
+
+.dark-mode .navbar-brand {
+    color: var(--dark-text-primary) !important;
+}
+
+.dark-mode .navbar-brand span {
+    color: var(--dark-primary) !important;
+}
+
+.dark-mode .nav-link {
+    color: var(--dark-text-secondary) !important;
+}
+
+.dark-mode .nav-link:hover {
+    color: var(--dark-primary) !important;
+}
+
+/* Search Form Dark Mode */
+.dark-mode .search-form .form-control {
+    background-color: var(--dark-input-background) !important;
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.dark-mode .search-icon {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Dropdown Styles */
+.dark-mode .dropdown-menu {
+    background-color: var(--dark-surface) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.dark-mode .dropdown-item {
+    color: var(--dark-text-primary) !important;
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: rgba(132, 5, 235, 0.1) !important;
+    color: var(--dark-primary) !important;
+}
+
+/* Form Controls */
+.dark-mode .form-control {
+    background-color: var(--dark-input-background) !important;
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.dark-mode .form-control:focus {
+    background-color: var(--dark-input-background) !important;
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(144, 238, 144, 0.5) !important;
+
+}
+
+/* Placeholders */
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+    color: var(--dark-text-secondary) !important;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    caret-color: var(--dark-text-primary) !important;
+}
+
+/* Additional Dark Mode Specific Styles */
+.dark-mode .messages {
+    background-color: transparent !important;
+}
+
+.dark-mode .alert-message {
+    background-color: var(--dark-primary) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Dark Mode Activity Styles */
+body.dark-mode .activity-card {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .activity-card .card-header {
+    border-bottom-color: var(--dark-border);
+}
+
+body.dark-mode .activity-list {
+    background-color: var(--dark-surface);
+}
+
+body.dark-mode .activity-item {
+    border-bottom-color: var(--dark-border);
+    transition: background-color 0.2s ease;
+}
+
+body.dark-mode .activity-item:hover {
+    background-color: rgba(144, 238, 144, 0.5);
+}
+
+body.dark-mode .activity-avatar {
+    background-color: var(--dark-primary);
+}
+
+body.dark-mode .activity-time {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .activity-room {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .activity-content {
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .user-link {
+    color: var(--dark-primary);
+}
+
+body.dark-mode .user-link:hover {
+    color: #90FF90;
+    text-decoration: underline;
+}
+
+/* Custom scrollbar for dark mode */
+body.dark-mode .activity-list::-webkit-scrollbar-track {
+    background: #4a4a4a;
+}
+
+body.dark-mode .activity-list::-webkit-scrollbar-thumb {
+    background: #6c6c6c;
+}
+
+body.dark-mode .activity-list::-webkit-scrollbar-thumb:hover {
+    background: #8c8c8c;
+}
+
+/* Dark Mode Styles for Topics Page */
+body.dark-mode .card {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .card-header {
+    background-color: rgba(31, 31, 31, 0.9);
+    border-bottom-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .list-group-item {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+    transition: all 0.2s ease;
+}
+
+body.dark-mode .list-group-item:hover {
+    background-color: rgba(144, 238, 144, 0.5);
+    text-decoration: none;
+}
+
+body.dark-mode .list-group-item.active {
+    background-color: rgba(144, 238, 144, 0.5);
+    border-color: var(--dark-primary);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .badge {
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .badge.bg-light {
+    background-color: rgba(248, 249, 250, 0.2) !important;
+    border-color: var(--dark-border);
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .badge.bg-primary {
+    background-color: var(--dark-primary) !important;
+}
+
+body.dark-mode .text-primary {
+    color: var(--dark-primary) !important;
+}
+
+body.dark-mode .list-group-item:hover .bi-chevron-right {
+    color: var(--dark-primary);
+}
+
+/* Dark Mode Styles for Rooms Page */
+body.dark-mode .rooms-container::-webkit-scrollbar-track {
+    background: #4a4a4a;
+    border-radius: 10px;
+}
+
+body.dark-mode .rooms-container::-webkit-scrollbar-thumb {
+    background: #6c6c6c;
+    border-radius: 10px;
+}
+
+body.dark-mode .rooms-container::-webkit-scrollbar-thumb:hover {
+    background: #8c8c8c;
+}
+
+body.dark-mode .room-card {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(144, 238, 144, 0.5);
+}
+
+body.dark-mode .room-avatar {
+    background-color: var(--dark-primary);
+}
+
+body.dark-mode .host-link {
+    color: var(--dark-primary);
+}
+
+body.dark-mode .host-link:hover {
+    color: #90FF90;
+    text-decoration: underline;
+}
+
+body.dark-mode .room-title {
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .room-description {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .topic-badge {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .btn-primary {
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+}
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-primary:focus,
+body.dark-mode .btn-primary:active {
+    background-color: #90FF90;
+    border-color: #90FF90;
+}
+
+body.dark-mode .room-actions {
+    color: var(--dark-text-primary);
+}
+
+/* Dark Mode Styles for Create Room Page */
+body.dark-mode .create-room-container .custom-card {
+    background-color: var(--dark-surface);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .create-room-container .heading {
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .create-room-container .form-label {
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .create-room-container .required {
+    color: #ff4d4d;
+}
+
+body.dark-mode .create-room-container .form-control,
+body.dark-mode .create-room-container select,
+body.dark-mode .create-room-container textarea {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .create-room-container .form-control::placeholder,
+body.dark-mode .create-room-container textarea::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .create-room-container .form-control:focus,
+body.dark-mode .create-room-container select:focus,
+body.dark-mode .create-room-container textarea:focus {
+    border-color: var(--dark-primary);
+    box-shadow: 0 0 5px rgba(144, 238, 144, 0.5);
+}
+
+body.dark-mode .create-room-container select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+body.dark-mode .create-room-container .btn-submit {
+    background-color: var(--dark-primary);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .create-room-container .btn-submit:hover {
+    background-color: #90FF90;
+}
+
+body.dark-mode .create-room-container .btn-cancel {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border);
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .create-room-container .btn-cancel:hover {
+    background-color: rgba(132, 5, 235, 0.1);
+    color: var(--dark-primary);
+}
+
+/* Dark Mode Styles for Login Page */
+body.dark-mode .login-container {
+    background-color: var(--dark-background);
+}
+
+body.dark-mode .form-wrapper {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-primary);
+    box-shadow: 0 0 15px rgba(144, 238, 144, 0.5);
+}
+
+body.dark-mode .form-title {
+    color: var(--dark-primary);
+}
+
+body.dark-mode label {
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .form-input,
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="email"] {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .form-input::placeholder,
+body.dark-mode input[type="text"]::placeholder,
+body.dark-mode input[type="password"]::placeholder,
+body.dark-mode input[type="email"]::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .form-input:focus,
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="password"]:focus,
+body.dark-mode input[type="email"]:focus {
+    border-color: var(--dark-primary);
+    box-shadow: 0 0 6px rgba(144, 238, 144, 0.5);
+}
+
+body.dark-mode .form-submit {
+    background-color: var(--dark-primary);
+    color: var(--dark-text-primary);
+}
+
+body.dark-mode .form-submit:hover:not(:disabled) {
+    background-color: #90FF90;
+    transform: translateY(-1px);
+}
+
+body.dark-mode .form-submit:disabled {
+    background-color: #4a4a4a;
+    color: #7a7a7a;
+    cursor: not-allowed;
+}
+
+body.dark-mode .form-footer {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .requirements-container {
+    background-color: rgba(31, 31, 31, 0.8);
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .requirement {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .requirement.valid {
+    color: var(--dark-primary);
+}
+
+body.dark-mode .requirement.invalid {
+    color: #ff4d4d;
+}
+
+body.dark-mode .icon.valid {
+    color: var(--dark-primary);
+}
+
+body.dark-mode .icon.invalid {
+    color: #ff4d4d;
+}
+
+body.dark-mode .verification-hint {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .card-footer {
+    background-color: var(--dark-surface-lighter);
+    border-top-color: var(--dark-border);
+}
+
+body.dark-mode .card-header {
+    background-color: var(--dark-surface-lighter);
+    border-bottom-color: var(--dark-border);
+}
+
+body.dark-mode .delete-container {
+    background-color: var(--dark-surface);
+    box-shadow: 0 2px 5px #90FF90;
+    color: var(--dark-text-primary);
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        padding: 15px;
+        width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        font-size: 1em;
+    }
+    button, .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 1em;
+    }
+    .large-element {
+        display: none;
+    }
+    .card {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    .list-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .button {
+            padding: 10px;
+            font-size: 0.9em;
+        }
+    }
+}
